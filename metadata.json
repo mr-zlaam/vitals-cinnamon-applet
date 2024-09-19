@@ -1,0 +1,9 @@
+
+{
+  "uuid": "vitals@zlaam",
+  "name": "Vitals",
+  "description": "Displays memory usage and network speed.",
+  "version": "1.0",
+  "max-instances": "1",
+  "icon": "network-wireless"
+}
