@@ -29,7 +29,7 @@ MyApplet.prototype = {
       let networkSpeed = this._getNetworkSpeed();
 
       // Update the applet label with memory and network data
-      this.set_applet_label(`RAM: ${memoryUsage} | ${networkSpeed}`);
+      this.set_applet_label(`${memoryUsage} - ${networkSpeed}`);
     } catch (e) {
       global.logError(`Error updating applet: ${e}`);
       this.set_applet_label("Error fetching data");
@@ -74,12 +74,12 @@ MyApplet.prototype = {
       });
 
       let downloadSpeed = (totalRxBytes - this.previousRxBytes) / 1024; // In KB/s
-      let uploadSpeed = (totalTxBytes - this.previousTxBytes) / 1024; // In KB/s
+      //let uploadSpeed = (totalTxBytes - this.previousTxBytes) / 1024; // In KB/s
 
       this.previousRxBytes = totalRxBytes;
       this.previousTxBytes = totalTxBytes;
 
-      return `speed: ${downloadSpeed.toFixed(1)} KB/s`;
+      return `${downloadSpeed.toFixed(1)} KB/s`;
     } else {
       return "N/A";
     }
