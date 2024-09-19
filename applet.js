@@ -10,7 +10,7 @@ function MyApplet(metadata, orientation, panel_height, instance_id) {
 MyApplet.prototype = {
   __proto__: Applet.TextIconApplet.prototype,
 
-  _init: function(metadata, orientation, panel_height, instance_id) {
+  _init: function(_, orientation, panel_height, instance_id) {
     Applet.TextIconApplet.prototype._init.call(this, orientation, panel_height, instance_id);
 
     this.set_applet_label("Fetching data...");
@@ -29,7 +29,7 @@ MyApplet.prototype = {
       let networkSpeed = this._getNetworkSpeed();
 
       // Update the applet label with memory and network data
-      this.set_applet_label(`Memory: ${memoryUsage} | ${networkSpeed}`);
+      this.set_applet_label(`RAM: ${memoryUsage} | ${networkSpeed}`);
     } catch (e) {
       global.logError(`Error updating applet: ${e}`);
       this.set_applet_label("Error fetching data");
@@ -79,7 +79,7 @@ MyApplet.prototype = {
       this.previousRxBytes = totalRxBytes;
       this.previousTxBytes = totalTxBytes;
 
-      return `DL: ${downloadSpeed.toFixed(1)} KB/s | UL: ${uploadSpeed.toFixed(1)} KB/s`;
+      return `speed: ${downloadSpeed.toFixed(1)} KB/s`;
     } else {
       return "N/A";
     }
