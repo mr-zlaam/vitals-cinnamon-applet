@@ -29,7 +29,7 @@ MyApplet.prototype = {
       let networkSpeed = this._getNetworkSpeed();
 
       // Update the applet label with memory and network data
-      this.set_applet_label(`${memoryUsage} - ${networkSpeed}`);
+      this.set_applet_label(` ${memoryUsage}   ${networkSpeed} `);
     } catch (e) {
       global.logError(`Error updating applet: ${e}`);
       this.set_applet_label("Error fetching data");
@@ -50,7 +50,7 @@ MyApplet.prototype = {
       let usedMem = totalMem - availableMem;
       let usagePercentage = (usedMem / totalMem) * 100;
 
-      return `${usagePercentage.toFixed(1)}%`;
+      return `${Math.round(Number(usagePercentage))}%`;
     } else {
       return "N/A";
     }
